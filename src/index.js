@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import users from './users';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+import users from "./users";
 
 
-function render(){
+function render() {
   ReactDOM.render(
     <App />,
-    document.getElementById('root')
+    document.getElementById("root")
   );
 }
 render();
