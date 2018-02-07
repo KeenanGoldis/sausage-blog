@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import UserDetail from "./UserDetail";
+import "../css/ListOfUsers.css";
+
 
 class ListOfUsers extends Component {
   constructor(props) {
@@ -22,14 +24,21 @@ class ListOfUsers extends Component {
 
   render() {
     const current = this.state.users[this.props.currentUser];
+
     return (
       <div>
-      <button id="button" onClick={this.toggleList}>Sauasge Recipes</button>
+      <button id="button" onClick={this.toggleList}>Sausage Recipes</button>
         <div hidden={!this.state.listVisible}>
           {this.state.users.map((user, i) =>
             <div>
               <p key={i}>
-                {user.sausage_name} {user.last_name}
+                <div className="sausage_name">
+                  <h3>{user.sausage_name}</h3>
+                </div>
+                <div className="sausage_description">
+                  <h6>{user.sausage_description}</h6>
+                </div>
+
                 <button id="view" onClick={() => {this.props.selectUser(user.id-1)}}>View Detail</button>
               </p>
             </div>

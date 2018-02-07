@@ -1,0 +1,12 @@
+
+.sausage_name h3{
+  font-size: 30px;
+  color: green;
+  margin: 0px;
+}
+
+.sausage_description h6{
+  font-size: 14px;
+  color: red;
+  margin: 5px;
+}

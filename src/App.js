@@ -4,7 +4,7 @@ import ListOfUsers from "./components/ListOfUsers";
 function App(props) {
   return (
     <div className="App">
-      <ListOfUsers
+      <ListOfUsers 
         users={props.users}
         currentUser={props.currentUser}
         selectUser={props.selectUser} />
