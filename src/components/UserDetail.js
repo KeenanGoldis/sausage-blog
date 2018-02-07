@@ -1,10 +1,13 @@
 import React from "react";
 
 function UserDetail(props){
-  const userDivs = props.users.map(user=>{
-    return <div>{user.first_name} {user.last_name} is the coolest guy</div>
-  })
-  return <div>{userDivs[0]}</div>;
+  let user = props.current;
+  return(
+    <div>
+      <h2>Testing</h2>
+      <img src={user.avatar} alt={user.first_name} />
+      <p>{user.address}</p>
+    </div>
+  );
 }
-
 export default UserDetail;

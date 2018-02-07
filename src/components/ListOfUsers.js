@@ -1,59 +1,46 @@
-import React from "react";
+import React, {Component} from "react";
+import UserDetail from "./UserDetail";
 
-
-class ListOfUsers extends React.Component {
+class ListOfUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hide: false,
-      visible: true,
-      btn: "hide",
-      searchText: ""
+      listVisible: true,
+      searchText: "",
+      users: props.users,
+      currentUser: props.currentUser,
     };
   }
-  hide() {
-    if (this.state.btn === "hide") {
-      this.setState({
-        btn: "show",
-        hide: true
-      });
+
+  toggleList = () => {
+    if (this.state.listVisible === true){
+      this.setState({listVisible: false});
     } else {
-      this.setState({
-        btn: "hide",
-        hide: false
-      });
+      this.setState({listVisible: true});
     }
   }
 
   render() {
-    let userDivs;
-    if (!this.state.hide) {
-      userDivs = this.props.users.map(
-        (user, index) => {
-          return (<div key={index}>{user.first_name} {user.last_name}</div>)
-        });
-    }
-    // const userDivs =
+    const current = this.state.users[this.props.currentUser];
     return (
       <div>
-        {userDivs}
-        <div>
-          <button onClick={() => this.hide()}>
-            {this.state.btn}
-          </button>
-          <div>Search</div>
-          <input
-          type="text"
-          value={this.state.searchText}
-          onChange={(e) => this.setState({
-            searchText: e.target.value
-          })
-        }
-          ></input>
+      <button id="button" onClick={this.toggleList}>Sauasge Recipes</button>
+        <div hidden={!this.state.listVisible}>
+          {this.state.users.map((user, i) =>
+            <div>
+              <p key={i}>
+                {user.sausage_name} {user.last_name}
+                <button id="view" onClick={() => {this.props.selectUser(user.id-1)}}>View Detail</button>
+              </p>
+            </div>
+          )}
+        </div>
+        <div className="detail">
+          <UserDetail current={current} />
         </div>
       </div>
     );
   }
-
 }
+
 export default ListOfUsers;

@@ -2,13 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
-import users from "./users";
+import users from "./users.js";
 
-console.log(users)
+let currentUser = 0;
+
+function selectUser(user){
+  currentUser = user;
+  render();
+}
 
 function render() {
   ReactDOM.render(
-    <App users={users} />,
+    <App
+      users={users}
+      currentUser={currentUser}
+      selectUser={selectUser}
+    />,
     document.getElementById("root")
   );
 }
