@@ -1,16 +1,16 @@
 import React, {Component} from "react";
 import UserDetail from "./UserDetail";
-import "../css/ListOfUsers.css";
+import "../css/ListOfSausageRecipes.css";
 
 
-class ListOfUsers extends Component {
+class ListOfsausageRecipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listVisible: true,
       searchText: "",
-      users: props.users,
-      currentUser: props.currentUser,
+      sausageRecipes: props.sausageRecipes,
+      currentSausageRecipe: props.currentSausageRecipe,
     };
   }
 
@@ -23,13 +23,13 @@ class ListOfUsers extends Component {
   }
 
   render() {
-    const current = this.state.users[this.props.currentUser];
+    const current = this.state.sausageRecipes[this.props.currentSausageRecipe];
 
     return (
       <div>
       <button id="button" onClick={this.toggleList}>Sausage Recipes</button>
         <div hidden={!this.state.listVisible}>
-          {this.state.users.map((user, i) =>
+          {this.state.sausageRecipes.map((user, i) =>
             <div>
               <p key={i}>
                 <div className="sausage_name">
@@ -39,7 +39,7 @@ class ListOfUsers extends Component {
                   <h6>{user.sausage_description}</h6>
                 </div>
 
-                <button id="view" onClick={() => {this.props.selectUser(user.id-1)}}>View Detail</button>
+                <button id="view" onClick={() => {this.props.selectSausageRecipe(user.id-1)}}>View Detail</button>
               </p>
             </div>
           )}
@@ -52,4 +52,4 @@ class ListOfUsers extends Component {
   }
 }
 
-export default ListOfUsers;
+export default ListOfsausageRecipes;
