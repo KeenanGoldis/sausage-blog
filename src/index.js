@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import sausageRecipes from "./sausageRecipes.js";
-import selectSausageRecipe from "./functions/selectSausageRecipe.js";
 
 let currentSausageRecipe = 0;
 
+function selectSausageRecipe(sausageRecipe){
+  currentSausageRecipe = sausageRecipe;
+  render();
+}
 
 function render() {
   ReactDOM.render(

@@ -10,3 +10,8 @@
   color: red;
   margin: 5px;
 }
+
+img {
+  max-width: 300px;
+  max-height: 300px;
+}

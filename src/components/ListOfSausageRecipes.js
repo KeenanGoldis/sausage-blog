@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-import UserDetail from "./UserDetail";
+import SausageRecipeDetail from "./SausageRecipeDetail.js";
 import "../css/ListOfSausageRecipes.css";
 
-
-class ListOfsausageRecipes extends Component {
+class ListOfSausageRecipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,27 +28,27 @@ class ListOfsausageRecipes extends Component {
       <div>
       <button id="button" onClick={this.toggleList}>Sausage Recipes</button>
         <div hidden={!this.state.listVisible}>
-          {this.state.sausageRecipes.map((user, i) =>
+          {this.state.sausageRecipes.map((sausageRecipe, i) =>
             <div>
               <p key={i}>
                 <div className="sausage_name">
-                  <h3>{user.sausage_name}</h3>
+                  <h3>{sausageRecipe.sausage_name}</h3>
                 </div>
                 <div className="sausage_description">
-                  <h6>{user.sausage_description}</h6>
+                  <h6>{sausageRecipe.sausage_description}</h6>
                 </div>
 
-                <button id="view" onClick={() => {this.props.selectSausageRecipe(user.id-1)}}>View Detail</button>
+                <button id="view" onClick={() => {this.props.selectSausageRecipe(sausageRecipe.id-1)}}>View Detail</button>
               </p>
             </div>
           )}
         </div>
         <div className="detail">
-          <UserDetail current={current} />
+          <sausageRecipeDetail current={current} />
         </div>
       </div>
     );
   }
 }
 
-export default ListOfsausageRecipes;
+export default ListOfSausageRecipes;

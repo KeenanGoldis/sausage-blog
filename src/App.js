@@ -1,10 +1,10 @@
 import React from "react";
-import ListOfUsers from "./components/ListOfUsers";
+import ListOfSausageRecipes from "./components/ListOfSausageRecipes";
 
 function App(props) {
   return (
     <div className="App">
-      <ListOfUsers
+      <ListOfSausageRecipes
         sausageRecipes={props.sausageRecipes}
         currentSausageRecipe={props.currentSausageRecipe}
         selectSausageRecipe={props.selectSausageRecipe} />
