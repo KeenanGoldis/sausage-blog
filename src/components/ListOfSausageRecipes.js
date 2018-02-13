@@ -6,12 +6,21 @@ class ListOfSausageRecipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      detailVisible: true,
       listVisible: true,
       searchText: "",
       sausageRecipes: props.sausageRecipes,
       currentSausageRecipe: props.currentSausageRecipe,
     };
   }
+
+  toggleShow = () => {
+  if (this.state.detailVisible === true) {
+    this.setState({detailVisible: false});
+  } else {
+    this.setState({detailVisible: true});
+  }
+}
 
   toggleList = () => {
     if (this.state.listVisible === true){
@@ -23,13 +32,12 @@ class ListOfSausageRecipes extends Component {
 
   render() {
     const current = this.state.sausageRecipes[this.props.currentSausageRecipe];
-
     return (
       <div>
       <button id="button" onClick={this.toggleList}>Sausage Recipes</button>
         <div hidden={!this.state.listVisible}>
           {this.state.sausageRecipes.map((sausageRecipe, i) =>
-            <div>
+            <div key={i}>
               <p key={i}>
                 <div className="sausage_name">
                   <h3>{sausageRecipe.sausage_name}</h3>
@@ -43,8 +51,8 @@ class ListOfSausageRecipes extends Component {
             </div>
           )}
         </div>
-        <div className="detail">
-          <sausageRecipeDetail current={current} />
+        <div className="detail" hidden={!this.state.detailVisible}>
+          <SausageRecipeDetail current={current} />
         </div>
       </div>
     );
