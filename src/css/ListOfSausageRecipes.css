@@ -7,20 +7,41 @@ html{
   margin: 0px;
 }
 
-.sausage_description h6{
-  font-size: 18px;
-  color: black;
-  margin: 5px;
-}
-
 .sausageRecipeList {
   flex-direction: row;
-  margin: 20px;
+  margin: 0px;
   background-color: lightgray;
+  align-items: center;
 }
 
-.sausageRecipeList img{
-  opacity: 50%;
+.sausageRecipeImage {
   max-height: 600px;
-  border: 10px solid;
+  max-width: 600;
+}
+
+#sausageButton{
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: purple;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.sausageRecipeDetail{
+  color: purple;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.sausageRecipeDetail h2{
+  font-size: 30px;
+}
+.sausageRecipeDetail h4{
+  font-size: 24px;
 }

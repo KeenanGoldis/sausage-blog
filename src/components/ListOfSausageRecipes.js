@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import SausageRecipeDetail from "./SausageRecipeDetail.js";
+import SausageRecipeImage from "./SausageRecipeImage.js";
 import "../css/ListOfSausageRecipes.css";
 import Flexbox from 'flexbox-react';
 
@@ -41,18 +42,15 @@ class ListOfSausageRecipes extends Component {
             {this.state.sausageRecipes.map((sausageRecipe, i) =>
               <div key={i}>
                 <p key={i}>
-                  <div className="sausage_name">
-                    <h3>{sausageRecipe.sausage_name}</h3>
-                  </div>
-                  <div className="sausage_description">
-                    <h6>{sausageRecipe.sausage_description}</h6>
-                  </div>
-                  <button id="view" onClick={() => {this.props.selectSausageRecipe(sausageRecipe.id-1)}}>View Detail</button>
+                  <button id="sausageButton" className="sausage_name" onClick={() => {this.props.selectSausageRecipe(sausageRecipe.id-1)}}>{sausageRecipe.sausage_name}</button>
                 </p>
               </div>
             )}
           </div>
-          <div className="detail" hidden={!this.state.detailVisible}>
+          <div className="sausageRecipeImage" hidden={!this.state.detailVisible}>
+            <SausageRecipeImage current={current} />
+          </div>
+          <div className="sausageRecipeDetail" hidden={!this.state.detailVisible}>
             <SausageRecipeDetail current={current} />
           </div>
         </Flexbox>
