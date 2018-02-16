@@ -12,7 +12,7 @@ var connection = mysql.createPool({
 });
 
 //tempCont is used so that the server won't crash if too many people use it at the same time.
-//https://www.youtube.com/watch?v-hGZX_SA7IYg at 18 minutes for explanation.
+//https://www.youtube.com/watch?v-hGZX_SA7IYg at 18 minutes for explanation..
 app.get('/', function (request, response){
 connection.getConnection(function(error, tempCont){
   if(!!error) {
