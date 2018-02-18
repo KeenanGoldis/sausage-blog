@@ -2,9 +2,8 @@ var express = require('express');
 var mysql = require('mysql');
 var app = express();
 
-var connection = mysql.createPool({
+var connection = mysql.createConnection({
   //properties...
-  connectionLimit: 50,
   host: 'localhost',
   user: 'root',
   password: '',
@@ -13,26 +12,23 @@ var connection = mysql.createPool({
 
 //tempCont is used so that the server won't crash if too many people use it at the same time.
 //https://www.youtube.com/watch?v-hGZX_SA7IYg at 18 minutes for explanation..
-app.get('/', function (request, response){
-connection.getConnection(function(error, tempCont){
+
+connection.connect(function(error) {
   if(!!error) {
-    tempCont.release();
-    console.log('Error');
+    console.log('Error in connection');
   } else {
-    console.log('Connected!');
-    tempCont.query("SELECT * FROM allsausagerecipes", function(error, rows, fields){
-      tempCont.release();
-      if(!!error) {
-        console.log('Error in the query');
-      } else {
-        response.json(rows);
-      }
-    });
+    console.log("Connection is connected!");
+  }
+});
+
+app.get('/', function(req, resp){
+  connection.query("SELECT * FROM allsausagerecipes", function(error, rows, fields){
+    if(!!error) {
+      console.log('Error in the query');
+    } else {
+      console.log('Successful query');
     }
   });
 });
+
 app.listen(1337);
-
-var article = {
-
-}
