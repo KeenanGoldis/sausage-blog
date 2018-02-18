@@ -32,3 +32,7 @@ connection.getConnection(function(error, tempCont){
   });
 });
 app.listen(1337);
+
+var article = {
+
+}
